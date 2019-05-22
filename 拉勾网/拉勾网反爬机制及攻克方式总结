@@ -1,0 +1,25 @@
+1 连续爬取三页就返回空值
+  方式：
+  建立User-Agent和IP的循环池，每次换页随机选取使用
+2 直接利用headers中链接，就会返回IP被封的提示
+  方式一：
+  登录状态，直接提取headers中的cookies,以补充定制请求头数据。但是此次爬虫扔无法解决此问题
+  方式二：
+  seesion.cookies获取首页cookies，并记录下来，以此补充请求头。
+  值得注意的是每次换一次IP都需重新获取cookies
+3 KeyError错误
+  方式：
+  通过sleep.time设置休息时间，将页与页之间爬取的时间拉长
+4 Latin-1编码问题
+  方式：
+  URL地址中不存在中文，需通过urllib.parse.qupte编码为URL通用格式。urlillib.parse.unquote解码为中文
+  值得注意的是request.post（url,headers,data=data）中的data如果有中文关键字，则必须不必编码，且必不能编码
+5 数据爬取有限的问题
+  方式一：
+  拉勾网页面最多显示30页数据，每页15条，但其实json包中的数据远远不止这些数据。
+  我们可以通过content-positionResult-totalCount获取数据总量，但是并不一定能全部获取到。这也是拉勾网反爬真的是做到了极致。
+  在headers中有一条content-length，其后面对应的数据及我们可以最多爬取的页数，其页数*15即为我们最终可获取的数据量
+  方式二：
+  通过分组（每组数据量少于450条），且每个组是互相独立的，全部组的并集为全部数据量。例如公司规模分组分别提取，然后合并提取数据。
+
+
