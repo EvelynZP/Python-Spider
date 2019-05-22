@@ -1,5 +1,8 @@
-# Hello-world
-just another repository for a test
+# Python爬虫学习笔记及实战案例
 
-hi guys,
-初来乍到，请多关照
+## 目录
+### 参考书目
+### 学习笔记
+### 爬虫实战练习案例
+* __拉勾网招聘职位__
+* __豆瓣电影短评__
