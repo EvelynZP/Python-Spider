@@ -22,6 +22,10 @@
   方式二：
   通过分组（每组数据量少于450条），且每个组是互相独立的，全部组的并集为全部数据量。例如公司规模分组分别提取，然后合并提取数据。
 6 Python requests 移除SSL认证，控制台输出InsecureRequestWarning取消方法。
-  方式一：
+  方式：
   from requests.packages.urllib3.exceptions import InsecureRequestWarning # 禁用安全请求警告
   requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+7 Python熊猫数据帧读取from_records，“AssertionError：1列传递，传递数据有22列”
+  原因：list重复加入不同维度的list
+  方式：
+  定义全局和局部变量，直接加入同维度的数据
